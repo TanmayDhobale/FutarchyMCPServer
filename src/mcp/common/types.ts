@@ -1,0 +1,59 @@
+import { z } from 'zod';
+
+// Common response type
+export const ResponseSchema = z.object({
+  success: z.boolean(),
+  data: z.any().optional(),
+  error: z.string().optional(),
+});
+
+export type Response = z.infer<typeof ResponseSchema>;
+
+// DAO types
+export const DaoSchema = z.object({
+  address: z.string(),
+  tokenMint: z.string(),
+  usdcMint: z.string(),
+  // Add other DAO fields as needed
+});
+
+export type Dao = z.infer<typeof DaoSchema>;
+
+// Proposal types
+export const ProposalSchema = z.object({
+  address: z.string(),
+  dao: z.string(),
+  descriptionUrl: z.string(),
+  // Add other proposal fields as needed
+});
+
+export type Proposal = z.infer<typeof ProposalSchema>;
+
+// Tool parameter schemas
+export const GetDaosParamsSchema = z.object({});
+
+export const GetDaoParamsSchema = z.object({
+  daoId: z.string().describe("The ID of the DAO to retrieve"),
+});
+
+export const GetProposalsParamsSchema = z.object({
+  daoId: z.string().describe("The ID of the DAO to get proposals for"),
+});
+
+export const GetProposalParamsSchema = z.object({
+  proposalId: z.string().describe("The ID of the proposal to retrieve"),
+});
+
+export const CreateProposalParamsSchema = z.object({
+  daoId: z.string().describe("The ID of the DAO to create a proposal for"),
+  descriptionUrl: z.string().describe("URL to the proposal description"),
+  baseTokensToLP: z.number().describe("Amount of base tokens to LP"),
+  quoteTokensToLP: z.number().describe("Amount of quote tokens to LP"),
+});
+
+// Types for params
+export type GetDaosParams = z.infer<typeof GetDaosParamsSchema>;
+export type GetDaoParams = z.infer<typeof GetDaoParamsSchema>;
+export type GetProposalsParams = z.infer<typeof GetProposalsParamsSchema>;
+export type GetProposalParams = z.infer<typeof GetProposalParamsSchema>;
+export type CreateProposalParams = z.infer<typeof CreateProposalParamsSchema>; 

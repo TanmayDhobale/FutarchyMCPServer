@@ -1,26 +1,36 @@
 {
   "name": "futarchy-mcp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "MCP server for Futarchy-routes backend",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon --exec node --loader ts-node/esm src/server.ts",
     "build": "tsc",
+    "build:mcp": "tsc -p tsconfig.json",
+    "mcp": "node dist/mcp/bin/mcp-futarchy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "mcp-futarchy": "dist/mcp/bin/mcp-futarchy.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@coral-xyz/anchor": "^0.28.0",
     "@metadaoproject/futarchy": "^0.4.0-alpha.61",
+    "@modelcontextprotocol/sdk": "^1.10.1",
     "@solana/spl-token": "^0.4.13",
+    "@solana/web3.js": "^1.87.0",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.1",
+    "axios": "^1.6.2",
     "express": "^5.1.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "zod": "^3.24.3"
   }
 }

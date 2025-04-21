@@ -10,7 +10,7 @@ const port = process.env.PORT || 9000;
 const dummyKeypair = Keypair.generate();
 
 // Initialize Futarchy clients
-const connection = new Connection("insert-connection-url-here");
+const connection = new Connection("https://api.devnet.solana.com");
 const provider = new anchor.AnchorProvider(
     connection,
     {

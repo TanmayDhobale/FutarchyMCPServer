@@ -72,4 +72,53 @@ curl -X POST http://localhost:9000/daos/<dao-address>/proposals \
     "baseTokensToLP": 1000,
     "quoteTokensToLP": 1000
   }'
-``` 
+```
+
+## MCP Server for Cursor
+
+This project also includes an MCP (Model Context Protocol) server that allows Cursor to interact with the Futarchy backend through custom tools.
+
+### Setting up the MCP Server
+
+1. Run the setup script to install dependencies, build the project, and configure Cursor:
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+2. Or manually configure it:
+   - Install dependencies and build the project:
+   ```bash
+   npm install
+   npm run build
+   ```
+   - Open or create `~/.cursor/mcp.json`
+   - Add the following configuration (adjust the path as needed):
+   ```json
+   {
+     "mcpServers": {
+       "futarchy-routes": {
+         "command": "node",
+         "args": ["<absolute-path-to-project>/dist/mcp/bin/mcp-futarchy.js"]
+       }
+     }
+   }
+   ```
+
+### Using the MCP Server in Cursor
+
+You can use the following tools in Cursor's chat:
+
+1. `getDaos` - Get all DAOs from the Futarchy system
+2. `getDao` - Get a specific DAO by ID
+3. `getProposals` - Get all proposals for a specific DAO
+4. `getProposal` - Get a specific proposal by ID
+5. `createProposal` - Create a new proposal for a DAO
+
+For example, in Cursor's chat, you can say:
+
+```
+Use the getDaos tool to retrieve a list of all DAOs from the futarchy-routes backend.
+```
+
+For more details about the MCP server, see [src/mcp/README.md](src/mcp/README.md). 
