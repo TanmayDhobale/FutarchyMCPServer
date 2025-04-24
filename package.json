@@ -9,8 +9,12 @@
     "dev": "nodemon --exec node --loader ts-node/esm src/server.ts",
     "build": "tsc",
     "build:mcp": "tsc -p tsconfig.json",
+    "update:routes": "node src/mcp/bin/update-routes.js",
+    "build:all": "npm run build && npm run build:mcp && npm run update:routes",
     "mcp": "node dist/mcp/bin/mcp-futarchy.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mcp:prod": "DISCORD_TOKEN=your_discord_token TWITTER_BEARER_TOKEN=your_twitter_bearer_token node dist/mcp/bin/mcp-futarchy.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:sentiment": "node src/test-sentiment.js"
   },
   "bin": {
     "mcp-futarchy": "dist/mcp/bin/mcp-futarchy.js"
@@ -26,11 +30,21 @@
     "@solana/web3.js": "^1.87.0",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.1",
-    "axios": "^1.6.2",
+    "axios": "^1.8.4",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "natural": "^8.0.1",
+    "node-fetch": "^2.7.0",
     "nodemon": "^3.1.9",
+    "sentiment": "^5.0.2",
     "ts-node": "^10.9.2",
+    "twitter-api-v2": "^1.22.0",
     "typescript": "^5.8.3",
     "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.12",
+    "@types/sentiment": "^5.0.4"
   }
 }

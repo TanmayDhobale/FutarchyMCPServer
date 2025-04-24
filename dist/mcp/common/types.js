@@ -19,6 +19,24 @@ export const ProposalSchema = z.object({
     descriptionUrl: z.string(),
     // Add other proposal fields as needed
 });
+// Sentiment analysis types
+export const SentimentCategorySchema = z.object({
+    name: z.string(),
+    score: z.number(),
+});
+export const SentimentAnalysisSchema = z.object({
+    proposalId: z.string(),
+    sentimentScore: z.number(),
+    primaryCategory: z.string(),
+    categories: z.array(SentimentCategorySchema),
+    summary: z.string(),
+    keyPoints: z.array(z.string()),
+    concerns: z.array(z.string()),
+    sources: z.object({
+        discord: z.boolean(),
+        twitter: z.boolean(),
+    }),
+});
 // Tool parameter schemas
 export const GetDaosParamsSchema = z.object({});
 export const GetDaoParamsSchema = z.object({
@@ -35,4 +53,7 @@ export const CreateProposalParamsSchema = z.object({
     descriptionUrl: z.string().describe("URL to the proposal description"),
     baseTokensToLP: z.number().describe("Amount of base tokens to LP"),
     quoteTokensToLP: z.number().describe("Amount of quote tokens to LP"),
+});
+export const GetSentimentAnalysisParamsSchema = z.object({
+    proposalId: z.string().describe("The ID of the proposal to analyze"),
 });

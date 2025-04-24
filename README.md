@@ -121,4 +121,72 @@ For example, in Cursor's chat, you can say:
 Use the getDaos tool to retrieve a list of all DAOs from the futarchy-routes backend.
 ```
 
-For more details about the MCP server, see [src/mcp/README.md](src/mcp/README.md). 
+For more details about the MCP server, see [src/mcp/README.md](src/mcp/README.md).
+
+## Sentiment Analysis Feature
+
+The Futarchy MCP Server now includes a sentiment analysis tool that analyzes sentiment from Discord and Twitter data for specific proposals. This feature helps in understanding community sentiment about proposals and can be used to make more informed decisions.
+
+### How It Works
+
+1. The sentiment analysis tool collects data from Discord and Twitter about a specific proposal.
+2. It analyzes the sentiment using natural language processing techniques.
+3. It categorizes the sentiment into different categories (Tokenomics, Protocol Parameters, etc.).
+4. It generates a summary, key points, and concerns based on the analysis.
+5. The results are presented in a structured format that can be easily consumed by frontends.
+
+### Example Response
+
+```json
+{
+  "proposalId": "F3hsZzWinRAHbr6CUxdkUFBCH8qNk6Mi9Zfu3PMX49BC",
+  "sentimentScore": -0.8,
+  "primaryCategory": "Tokenomics",
+  "categories": [
+    {
+      "name": "Tokenomics",
+      "score": 0.4
+    },
+    {
+      "name": "Protocol Upgrades",
+      "score": 0.3
+    },
+    {
+      "name": "Partnerships Integrations",
+      "score": 0.2
+    },
+    {
+      "name": "Protocol Parameters",
+      "score": 0.1
+    }
+  ],
+  "summary": "The proposal to launch a new Horizon token for the Aave ecosystem has faced significant backlash from the community...",
+  "keyPoints": [
+    "The proposed token launch is seen as unnecessary and potentially harmful to the Aave token and community.",
+    "The revenue-sharing model is perceived as frontloaded and unfair, favoring early years when adoption and revenue may be low.",
+    "There is a desire to maintain the Aave token as the primary governance and utility token for the ecosystem."
+  ],
+  "concerns": [
+    "Dilution of the Aave token's value and attention.",
+    "Misalignment of incentives with the proposed revenue-sharing model.",
+    "Creation of a separate entity that could compete with the Aave ecosystem.",
+    "Lack of transparency and community involvement in the decision-making process."
+  ],
+  "sources": {
+    "discord": true,
+    "twitter": true
+  }
+}
+```
+
+### How to Use
+
+You can use the sentiment analysis tool in your MCP server as follows:
+
+```javascript
+const result = await mcp_futarchy_routes_getProposalSentiment({
+  proposalId: "F3hsZzWinRAHbr6CUxdkUFBCH8qNk6Mi9Zfu3PMX49BC"
+});
+```
+
+This will return the sentiment analysis for the specified proposal. 

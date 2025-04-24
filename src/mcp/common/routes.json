@@ -1,0 +1,189 @@
+{
+  "routes": [
+    {
+      "path": "/daos",
+      "method": "GET",
+      "description": "Get all DAOs from the Futarchy system",
+      "handler": "getDaos",
+      "params": []
+    },
+    {
+      "path": "/daos/:daoId",
+      "method": "GET",
+      "description": "Get a specific DAO by ID",
+      "handler": "getDao",
+      "params": [
+        {
+          "name": "daoId",
+          "type": "string",
+          "description": "The ID of the DAO to retrieve",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "/daos/:daoId/proposals",
+      "method": "GET",
+      "description": "Get all proposals for a specific DAO",
+      "handler": "getProposals",
+      "params": [
+        {
+          "name": "daoId",
+          "type": "string",
+          "description": "The ID of the DAO to get proposals for",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "/proposals/:proposalId",
+      "method": "GET",
+      "description": "Get a specific proposal by ID",
+      "handler": "getProposal",
+      "params": [
+        {
+          "name": "proposalId",
+          "type": "string",
+          "description": "The ID of the proposal to retrieve",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "/daos/:daoId/proposals",
+      "method": "POST",
+      "description": "Create a new proposal for a DAO",
+      "handler": "createProposal",
+      "params": [
+        {
+          "name": "daoId",
+          "type": "string",
+          "description": "The ID of the DAO to create a proposal for",
+          "required": true
+        },
+        {
+          "name": "descriptionUrl",
+          "type": "string",
+          "description": "URL to the proposal description",
+          "required": true
+        },
+        {
+          "name": "baseTokensToLP",
+          "type": "number",
+          "description": "Amount of base tokens to LP",
+          "required": true
+        },
+        {
+          "name": "quoteTokensToLP",
+          "type": "number",
+          "description": "Amount of quote tokens to LP",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "/proposals/:proposalId/buy-pass",
+      "method": "POST",
+      "description": "Buy tokens in the pass market for a proposal",
+      "handler": "buyInPassMarket",
+      "params": [
+        {
+          "name": "proposalId",
+          "type": "string",
+          "description": "The ID of the proposal to trade in",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "description": "Amount to buy",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "description": "User's public key",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "/proposals/:proposalId/sell-pass",
+      "method": "POST",
+      "description": "Sell tokens in the pass market for a proposal",
+      "handler": "sellInPassMarket",
+      "params": [
+        {
+          "name": "proposalId",
+          "type": "string",
+          "description": "The ID of the proposal to trade in",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "description": "Amount to sell",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "description": "User's public key",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "/proposals/:proposalId/buy-fail",
+      "method": "POST",
+      "description": "Buy tokens in the fail market for a proposal",
+      "handler": "buyInFailMarket",
+      "params": [
+        {
+          "name": "proposalId",
+          "type": "string",
+          "description": "The ID of the proposal to trade in",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "description": "Amount to buy",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "description": "User's public key",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "/proposals/:proposalId/sell-fail",
+      "method": "POST",
+      "description": "Sell tokens in the fail market for a proposal",
+      "handler": "sellInFailMarket",
+      "params": [
+        {
+          "name": "proposalId",
+          "type": "string",
+          "description": "The ID of the proposal to trade in",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "description": "Amount to sell",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "description": "User's public key",
+          "required": true
+        }
+      ]
+    }
+  ]
+} 

@@ -2,7 +2,8 @@
 
 import { main } from '../server/index.js';
 
-main().catch((error: any) => {
-  console.error('Failed to start Futarchy MCP server:', error);
+// Run the MCP server
+main().catch(err => {
+  console.error('Error starting MCP server:', err);
   process.exit(1);
 }); 

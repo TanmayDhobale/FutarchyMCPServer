@@ -29,6 +29,30 @@ export const ProposalSchema = z.object({
 
 export type Proposal = z.infer<typeof ProposalSchema>;
 
+// Sentiment analysis types
+export const SentimentCategorySchema = z.object({
+  name: z.string(),
+  score: z.number(),
+});
+
+export type SentimentCategory = z.infer<typeof SentimentCategorySchema>;
+
+export const SentimentAnalysisSchema = z.object({
+  proposalId: z.string(),
+  sentimentScore: z.number(),
+  primaryCategory: z.string(),
+  categories: z.array(SentimentCategorySchema),
+  summary: z.string(),
+  keyPoints: z.array(z.string()),
+  concerns: z.array(z.string()),
+  sources: z.object({
+    discord: z.boolean(),
+    twitter: z.boolean(),
+  }),
+});
+
+export type SentimentAnalysis = z.infer<typeof SentimentAnalysisSchema>;
+
 // Tool parameter schemas
 export const GetDaosParamsSchema = z.object({});
 
@@ -51,9 +75,14 @@ export const CreateProposalParamsSchema = z.object({
   quoteTokensToLP: z.number().describe("Amount of quote tokens to LP"),
 });
 
+export const GetSentimentAnalysisParamsSchema = z.object({
+  proposalId: z.string().describe("The ID of the proposal to analyze"),
+});
+
 // Types for params
 export type GetDaosParams = z.infer<typeof GetDaosParamsSchema>;
 export type GetDaoParams = z.infer<typeof GetDaoParamsSchema>;
 export type GetProposalsParams = z.infer<typeof GetProposalsParamsSchema>;
 export type GetProposalParams = z.infer<typeof GetProposalParamsSchema>;
-export type CreateProposalParams = z.infer<typeof CreateProposalParamsSchema>; 
+export type CreateProposalParams = z.infer<typeof CreateProposalParamsSchema>;
+export type GetSentimentAnalysisParams = z.infer<typeof GetSentimentAnalysisParamsSchema>; 

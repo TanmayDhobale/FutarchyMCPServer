@@ -7,4 +7,9 @@ export declare class FutarchyApiClient {
     getProposals(daoId: string): Promise<Response>;
     getProposal(proposalId: string): Promise<Response>;
     createProposal(params: CreateProposalParams): Promise<Response>;
+    getProposalSentimentAnalysis(proposalId: string): Promise<Response>;
+    buyInPassMarket(proposalId: string, amount: number, userPublicKey: string): Promise<Response>;
+    sellInPassMarket(proposalId: string, amount: number, userPublicKey: string): Promise<Response>;
+    buyInFailMarket(proposalId: string, amount: number, userPublicKey: string): Promise<Response>;
+    sellInFailMarket(proposalId: string, amount: number, userPublicKey: string): Promise<Response>;
 }

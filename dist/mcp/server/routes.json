@@ -1,0 +1,41 @@
+{
+  "mcp_futarchy_routes_getDaos": {},
+  "mcp_futarchy_routes_getDao": {
+    "daoId": "string"
+  },
+  "mcp_futarchy_routes_getProposals": {
+    "daoId": "string"
+  },
+  "mcp_futarchy_routes_getProposal": {
+    "proposalId": "string"
+  },
+  "mcp_futarchy_routes_createProposal": {
+    "daoId": "string",
+    "descriptionUrl": "string",
+    "baseTokensToLP": "number",
+    "quoteTokensToLP": "number"
+  },
+  "mcp_futarchy_routes_getProposalSentiment": {
+    "proposalId": "string"
+  },
+  "mcp_futarchy_routes_buyInPassMarket": {
+    "proposalId": "string",
+    "amount": "number",
+    "user": "string"
+  },
+  "mcp_futarchy_routes_sellInPassMarket": {
+    "proposalId": "string",
+    "amount": "number",
+    "user": "string"
+  },
+  "mcp_futarchy_routes_buyInFailMarket": {
+    "proposalId": "string",
+    "amount": "number",
+    "user": "string"
+  },
+  "mcp_futarchy_routes_sellInFailMarket": {
+    "proposalId": "string",
+    "amount": "number",
+    "user": "string"
+  }
+}
