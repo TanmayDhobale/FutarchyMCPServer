@@ -2,6 +2,10 @@
 
 A server implementation for interacting with the Futarchy protocol on Solana.
 
+<a href="https://glama.ai/mcp/servers/@TanmayDhobale/FutarchyMCPServer">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@TanmayDhobale/FutarchyMCPServer/badge" alt="Futarchy Server MCP server" />
+</a>
+
 ## Setup Instructions
 
 1. Clone the repository:
@@ -189,4 +193,4 @@ const result = await mcp_futarchy_routes_getProposalSentiment({
 });
 ```
 
-This will return the sentiment analysis for the specified proposal. 
+This will return the sentiment analysis for the specified proposal.
