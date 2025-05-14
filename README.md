@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/tanmaydhobale-futarchymcpserver-badge.png)](https://mseep.ai/app/tanmaydhobale-futarchymcpserver)
+
 # Futarchy MCP
 
 A server implementation for interacting with the Futarchy protocol on Solana.
